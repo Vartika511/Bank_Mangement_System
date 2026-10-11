@@ -4,14 +4,18 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.Random;
 
 public class Signup3 extends JFrame implements ActionListener {
 
     JRadioButton r1,r2,r3,r4;
     JCheckBox c1,c2,c3,c4,c5,c6;
     JButton s, c;
+     String formno;
+    Signup3( String formno){
 
-    Signup3(){
+        this.formno = formno;
+
         ImageIcon i1 = new ImageIcon(ClassLoader.getSystemResource("icon/bank.png"));
         Image i2 = i1.getImage().getScaledInstance(100,100, Image.SCALE_DEFAULT);
         ImageIcon i3 = new ImageIcon(i2);
@@ -157,11 +161,11 @@ public class Signup3 extends JFrame implements ActionListener {
 
 
         JLabel label12 = new JLabel("Form No :");
-        label12.setBounds(700,10,100,30);
+        label12.setBounds(680,10,100,30);
         label12.setFont(new Font("Raleway", Font.BOLD, 14));
         add(label12);
 
-        JLabel label13 = new JLabel();
+        JLabel label13 = new JLabel(formno);
         label13.setBounds(760,10,60,30);
         label13.setFont(new Font("Raleway", Font.BOLD, 14));
         add(label13);
@@ -171,6 +175,7 @@ public class Signup3 extends JFrame implements ActionListener {
         s.setBackground(Color.BLACK);
         s.setForeground(Color.BLACK);
         s.setBounds(250,720,100,30);
+        s.addActionListener(this);
         add(s);
 
         c = new JButton("Cancel");
@@ -178,6 +183,7 @@ public class Signup3 extends JFrame implements ActionListener {
         c.setBackground(Color.BLACK);
         c.setForeground(Color.BLACK);
         c.setBounds(420,720,100,30);
+        c.addActionListener(this);
         add(c);
 
 
@@ -191,9 +197,65 @@ public class Signup3 extends JFrame implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent e) {
 
+        String atype = null;
+        if(r1.isSelected()){
+            atype = "Saving Account";
+        }else if (r2.isSelected()){
+            atype= "Fixed Deposit Account";
+        }else if(r3.isSelected()){
+            atype ="Current Account";
+        }else
+            atype ="Recurring Deposit Account";
+
+
+        Random ran = new Random();
+        long first7 = (ran.nextLong() % 90000000L) + 1409963000000000L;
+        String cardno = ""+ Math.abs(first7);
+
+        long first3 = (ran.nextLong() % 9000L) + 1000L;
+        String pin = "" + Math.abs(first3);
+
+        String fac = "";
+        if(c1.isSelected()){
+            fac = fac +"ATM Card";
+        }else if(c2.isSelected()){
+            fac = fac + "Internet Banking";
+        }else if(c3.isSelected()){
+            fac = fac + "Mobile Banking";
+        }else if(c4.isSelected()){
+            fac = fac + "Email Alert";
+        }else if(c5.isSelected()){
+            fac = fac + "Cheque Book";
+        }else if(c6.isSelected()){
+            fac = fac + "E-Statement";
+        }
+
+        try{
+            if(e.getSource()==s){
+                if(atype.equals("")){
+                    JOptionPane.showMessageDialog(null, "Fill all the Fields");
+                }else{
+
+                    Conn c2 = new Conn();
+
+                    String q1 = "INSERT INTO signup_3 VALUES('"+formno+"', '"+atype+"', '"+cardno+"', '"+pin+"','"+fac+"')";
+                    String q2 = "INSERT INTO login VALUES('"+formno+"', '"+cardno+"', '"+pin+"')";
+                    c2.statement.executeUpdate((q1));
+                    c2.statement.executeUpdate((q2));
+                    JOptionPane.showMessageDialog(null, "Card Number :" + cardno + " \n Pin :" +pin);
+                    new Deposit(pin);
+                    setVisible(false);
+                }
+            }
+            else if(e.getSource()==c){
+                System.exit(0);
+            }
+        }catch(Exception E){
+            E.printStackTrace();
+        }
     }
 
     public static void main(String[] args) {
-           new Signup3();
+           new Signup3("");
     }
 }

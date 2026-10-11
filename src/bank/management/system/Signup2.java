@@ -185,7 +185,7 @@ public class Signup2 extends JFrame  implements ActionListener {
 
 
         JLabel label12 = new JLabel("Form No :");
-        label12.setBounds(700,10,100,30);
+        label12.setBounds(650,10,100,30);
         label12.setFont(new Font("Raleway", Font.BOLD, 20));
         add(label12);
 
@@ -214,6 +214,40 @@ public class Signup2 extends JFrame  implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent e) {
 
+        String rel = (String) comboBox.getSelectedItem();
+        String caste = (String) comboBox2.getSelectedItem();
+        String inc = (String) comboBox3.getSelectedItem();
+        String edu = (String) comboBox4.getSelectedItem();
+        String occ = (String) comboBox5.getSelectedItem();
+        String pan = textPan.getText();
+        String addhar = textAddhar.getText();
+        String scitizen = null;
+        if(r1.isSelected()){
+            scitizen = "Yes";
+        }else if (r2.isSelected()){
+            scitizen = "No";
+        }
+        String eAccount = null;
+        if(e1.isSelected()){
+            eAccount = "Yes";
+        }else if(e2.isSelected()) {
+            eAccount  = "No";
+        }
+
+        try{
+            if(textPan.getText().equals("") || textAddhar.getText().equals("")){
+                JOptionPane.showMessageDialog(null, "Fill all the Fields");
+            }else{
+                Conn c1 = new Conn();
+
+                String q = "INSERT INTO signup_2 VALUES('"+formno+"', '"+rel+"', '"+caste+"', '"+inc+"','"+edu+"', '"+occ+"', '"+pan+"', '"+addhar+"', '"+scitizen+"', '"+eAccount+"')";
+                c1.statement.executeUpdate(q);
+                new Signup3(formno);
+                setVisible(false);
+            }
+        }catch(Exception E){
+            E.printStackTrace();
+        }
     }
 
     public static void main(String[] args){

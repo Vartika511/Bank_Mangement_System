@@ -119,7 +119,8 @@ public class Login extends JFrame implements ActionListener {
                  textField2.setText("");
                  passwordField3.setText("");
              }else{
-
+                new Signup();
+                setVisible(false);
              }
 
          }catch (Exception E){
