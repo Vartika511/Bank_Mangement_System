@@ -21,7 +21,7 @@ A desktop ATM and banking application built with **Java Swing** and **JDBC**. Us
 - **Balance enquiry**
 - **Mini statement** showing recent transactions
 - **PIN change**
-- [ ] Input validation and error handling for invalid card, PIN, or amount
+- **Input validation and error handling for invalid card, PIN, or amount**
 
 ## 🛠️ Tech Stack
 
