@@ -10,7 +10,7 @@ A desktop ATM and banking application built with **Java Swing** and **JDBC**. Us
 
 | Login | Dashboard | Transactions |
 |---|---|---|
-| ![Login](screenshots/login.png) | ![Menu](screenshots/menu.png) | ![Statement](screenshots/statement.png) |
+| ![Login](screenshot/login.png) | ![Menu](screenshot/menu.png) | ![Statement](screenshot/statement.png) |
 
 ## ✨ Features
 
