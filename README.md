@@ -49,12 +49,12 @@ bank-management-system/
 │   └── bank/management/system/
 │       ├── Login.java
 │       ├── Signup.java
-│       ├── Transactions.java
+│       ├── FastCash.java
 │       ├── Deposit.java
 │       ├── Withdrawl.java
 │       ├── BalanceEnquiry.java
-│       ├── MiniStatement.java
-│       ├── PinChange.java
+│       ├── mini.java
+│       ├── Pin.java
 │       └── Conn.java          # DB connection
 ├── icon/                      # UI images
 └── README.md
