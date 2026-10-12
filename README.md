@@ -97,16 +97,3 @@ Add the MySQL Connector JAR to your project libraries, then run `Login.java`.
 - Add unit tests and a proper layered architecture (DAO/service)
 - Migrate UI to JavaFX or a web frontend
 
-## 🙌 My Contributions
-
-- [ ] What you changed or added beyond the tutorial (e.g., fixed UI bugs, added validation, improved structure)
-
-## 📚 Credits
-
-Built while following [this tutorial series](https://www.youtube.com/watch?v=Qe2LBPIQOyE&list=PLbKub4Jss9oVSgCL6pFsiq0NLluRCDOdU&index=1).
-
-## 👤 Author
-
-**Aryan**
-- GitHub: [@your-username](https://github.com/your-username)
-- LinkedIn: [your-profile](https://linkedin.com/in/your-profile)
